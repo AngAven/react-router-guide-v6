@@ -1,5 +1,6 @@
 import {Link, Outlet, useLoaderData, Form, redirect, useNavigation} from "react-router-dom"
 import {getContacts, createContact} from "../contacts.js"
+import {useEffect} from "react";
 
 const action = async () => { // action =>  {request: Request, params: {â€¦}, context: undefined}
     const contact = await createContact()
@@ -10,12 +11,16 @@ const loader = async ({request}) => { // loader => {request: Request, params: {â
     const url = new URL(request.url)
     const q = url.searchParams.get('q')
     const contacts = await getContacts(q)
-    return {contacts}
+    return {contacts, q}
 }
 
 function Root() {
-    const {contacts} = useLoaderData()
+    const {contacts, q} = useLoaderData()
     const navigation = useNavigation()
+
+    useEffect(() => {
+        document.getElementById('search-form').value = q
+    }, [q]);
 
     return (
         <>
@@ -29,6 +34,7 @@ function Root() {
                             placeholder="Search"
                             type="search"
                             name="q"
+                            defaultValue={q}
                         />
                         <div
                             id="search-spinner"

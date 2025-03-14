@@ -6,8 +6,10 @@ const action = async () => { // action =>  {request: Request, params: {…}, con
     return redirect(`/contacts/${contact.id}/edit`)
 }
 
-const loader = async () => { // loader => {request: Request, params: {…}, context: undefined}
-    const contacts = await getContacts()
+const loader = async ({request}) => { // loader => {request: Request, params: {…}, context: undefined}
+    const url = new URL(request.url)
+    const q = url.searchParams.get('q')
+    const contacts = await getContacts(q)
     return {contacts}
 }
 

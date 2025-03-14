@@ -40,9 +40,12 @@ function Root() {
                             name="q"
                             defaultValue={q}
                             onChange={(event) => {
+                                const isFirstSearch = q === null
                                 // currentTarget is the DOM node the event is attached to
                                 // currentTarget.form is the input's parent form node
-                                submit(event.currentTarget.form)
+                                submit(event.currentTarget.form, {
+                                    replace: !isFirstSearch
+                                })
                             }}
                         />
                         <div

@@ -5,6 +5,7 @@ import {Root, loader as loaderRoot, action as actionRoot} from './routes/root.js
 import {ErrorPge} from '/src/error-pge.jsx'
 import {Contact, loader as loaderContact} from './routes/contact.jsx'
 import './index.css'
+import {EditContact} from "./routes/edit.jsx";
 
 const router = createBrowserRouter([
     {
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
             {
                 path: 'contacts/:contactId',
                 element: <Contact/>,
+                loader: loaderContact,
+            },
+            {
+                path: 'contacts/:contactId/edit',
+                element: <EditContact/>,
                 loader: loaderContact,
             }
         ]

@@ -4,8 +4,8 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import {Root, loader as loaderRoot, action as actionRoot} from './routes/root.jsx'
 import {ErrorPge} from '/src/error-pge.jsx'
 import {Contact, loader as loaderContact} from './routes/contact.jsx'
+import {EditContact, action as actionEdit} from "./routes/edit.jsx";
 import './index.css'
-import {EditContact} from "./routes/edit.jsx";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +24,7 @@ const router = createBrowserRouter([
                 path: 'contacts/:contactId/edit',
                 element: <EditContact/>,
                 loader: loaderContact,
+                action: actionEdit,
             }
         ]
     },

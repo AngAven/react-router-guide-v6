@@ -6,6 +6,7 @@ import {ErrorPge} from '/src/error-pge.jsx'
 import {Contact, loader as loaderContact} from './routes/contact.jsx'
 import {EditContact, action as actionEdit} from "./routes/edit.jsx"
 import {action as actionDestroy} from './routes/destroy.jsx'
+import {Index} from "./routes/index.jsx";
 import './index.css'
 
 const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
         loader: loaderRoot,
         action: actionRoot,
         children: [
+            {
+                index: true,
+                element: <Index/>,
+            },
             {
                 path: 'contacts/:contactId',
                 element: <Contact/>,

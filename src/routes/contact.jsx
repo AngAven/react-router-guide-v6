@@ -1,14 +1,13 @@
-import { Form } from "react-router-dom";
+import {Form, useLoaderData} from "react-router-dom"
+import {getContact} from "../contacts.js"
+
+const loader = async ({params}) => {
+    const contact = await getContact(params.contactId)
+    return {contact}
+}
 
 function Contact() {
-    const contact = {
-        first: "Your",
-        last: "Name",
-        avatar: "https://robohash.org/you.png?size=200x200",
-        twitter: "your_handle",
-        notes: "Some notes",
-        favorite: true,
-    };
+    const {contact} = useLoaderData()
 
     return (
         <div id="contact">
@@ -31,7 +30,7 @@ function Contact() {
                     ) : (
                         <i>No Name</i>
                     )}{" "}
-                    <Favorite contact={contact} />
+                    <Favorite contact={contact}/>
                 </h1>
 
                 {contact.twitter && (
@@ -72,7 +71,7 @@ function Contact() {
     );
 }
 
-function Favorite({ contact }) {
+function Favorite({contact}) {
     const favorite = contact.favorite;
     return (
         <Form method="post">
@@ -91,4 +90,4 @@ function Favorite({ contact }) {
     );
 }
 
-export {Contact}
+export {Contact, loader}

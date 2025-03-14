@@ -1,12 +1,12 @@
 import {Link, Outlet, useLoaderData, Form} from "react-router-dom"
 import {getContacts, createContact} from "../contacts.js"
 
-const action = async () => {
+const action = async () => { // action =>  {request: Request, params: {…}, context: undefined}
     const contact = await createContact()
     return {contact}
 }
 
-const loader = async () => {
+const loader = async () => { // loader => {request: Request, params: {…}, context: undefined}
     const contacts = await getContacts()
     return {contacts}
 }

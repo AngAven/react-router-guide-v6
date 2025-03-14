@@ -2,12 +2,14 @@ import {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import {Root} from './routes/root.jsx'
+import {ErrorPge} from '/src/error-pge.jsx'
 import './index.css'
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Root/>
+        element: <Root/>,
+        errorElement: <ErrorPge/>,
     },
 ])
 

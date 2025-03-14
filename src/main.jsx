@@ -3,6 +3,7 @@ import {createRoot} from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import {Root} from './routes/root.jsx'
 import {ErrorPge} from '/src/error-pge.jsx'
+import {Contact} from './routes/contact.jsx'
 import './index.css'
 
 const router = createBrowserRouter([
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
         element: <Root/>,
         errorElement: <ErrorPge/>,
     },
+    {
+        path: 'contacts/:contactId',
+        element: <Contact/>,
+    }
 ])
 
 createRoot(document.getElementById('root')).render(

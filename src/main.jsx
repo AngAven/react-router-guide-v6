@@ -11,11 +11,13 @@ const router = createBrowserRouter([
         path: '/',
         element: <Root/>,
         errorElement: <ErrorPge/>,
+        children: [
+            {
+                path: 'contacts/:contactId',
+                element: <Contact/>,
+            }
+        ]
     },
-    {
-        path: 'contacts/:contactId',
-        element: <Contact/>,
-    }
 ])
 
 createRoot(document.getElementById('root')).render(

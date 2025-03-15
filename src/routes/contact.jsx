@@ -80,7 +80,9 @@ function Contact() {
 
 function Favorite({contact}) {
     const fetcher = useFetcher()
-    const favorite = contact.favorite
+    const favorite = fetcher.formData
+        ? fetcher.formData.get('favorite') === 'true'
+        : contact.favorite
 
     return (
         <fetcher.Form method="post">
